@@ -3,7 +3,20 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  # Create variables that make it much easier to read and compare the data than dictionaries, using comprehensions
+  ans = []
+  rList = [[key,value] for key, value in recipe.items()]
+  iList = [[key,value] for key, value in ingredients.items()]
+  # For the length of the recipe, check if the ingredients allow for the creation of at least 1, if not then return 0
+  for x in range(0, len(rList)):
+    if x < len(iList):
+      ans.append(int(iList[x][1]/rList[x][1]))
+    else:
+      return 0
+  # Return the minimum amount of creation allowed by the ingredients
+  return min(ans)
+
+
 
 
 if __name__ == '__main__':
